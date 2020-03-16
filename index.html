@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <title>Giftastic</title>
+  </head>
+
+  <body>
+    <div id="actors"></div>
+    <form id="casting">
+        <label for="star">Cast your actor</label>
+        <input type="text" id="actor-input"><br>
+        <input id="add-actor" type="submit" value="casted">
+    </form>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+   var actors = [];
+   function makeButtons() {
+
+    $("#actors").empty();
+   for (var i = 0; i < movies.length; i++) {
+    var x = $("<button>");
+    x.addClass("castmember");
+    x.attr("data-name", movies[i]);
+   x.text(actors[i]);
+   $("#actors").append(a);
+  }
+} 
+
+
+$("#add-cast").on("click", function(event) {
+        event.preventDefault();
+        var star = $("#actor-input").val().trim();
+        actors.push(castmember);
+        makeButtons();
+      });
+
+  </body>
