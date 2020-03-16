@@ -8,6 +8,7 @@
 
   <body>
     <div id="actors"></div>
+    <div id="cast-view"></div>
     <form id="casting">
         <label for="star">Cast your actor</label>
         <input type="text" id="actor-input"><br>
@@ -15,24 +16,27 @@
     </form>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
-   var actors = [];
-   function makeButtons() {
+   var actors = ["Samuel L Jackson", "John Travolta", "Bruce Willis"];
+      function makeButtons() {
+         $("#cast-view").empty();
+          for (var i = 0; i < actors.length; i++) {
+              var a = $("<button>");
+           a.addClass("actor-btn");
+           a.attr("data-name", actors[i]);
+           a.text(actors[i]);
+          $("#cast-view").append(a);
+        }
+      }
 
-    $("#actors").empty();
-   for (var i = 0; i < movies.length; i++) {
-    var x = $("<button>");
-    x.addClass("castmember");
-    x.attr("data-name", movies[i]);
-   x.text(actors[i]);
-   $("#actors").append(a);
-  }
-} 
-
-
-$("#add-cast").on("click", function(event) {
+      
+      $("#add-actor").on("click", function(event) {
+        event.preventDefault();
+        var movie = $("#actor-input").val().trim();
+        actors.push(actor);
+       $("#add-cast").on("click", function(event) {
         event.preventDefault();
         var star = $("#actor-input").val().trim();
-        actors.push(castmember);
+        actors.push(actors);
         makeButtons();
       });
 
