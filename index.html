@@ -9,11 +9,13 @@
   <body>
     <div id="actors"></div>
     <div id="cast-view"></div>
-    <form id="casting">
+   
+    <form id="casting"></form>
         <label for="star">Cast your actor</label>
         <input type="text" id="actor-input"><br>
         <input id="add-actor" type="submit" value="casted">
     </form>
+    <div id="castingroom"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
    var actors = ["Samuel L Jackson", "John Travolta", "Bruce Willis"];
@@ -39,5 +41,27 @@
         actors.push(actors);
         makeButtons();
       });
+      $("button").on("click", function() {
+      var actor = $(this).attr("data-actor");
+      var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+        actor + "&api_key=HL3hCr8wp24S1LPkg0z4vkhjtkaiIpz9";
+          
+        $.ajax({
+        url: queryURL, method: "GET"
+      })
+        .then(function(response) {
+          console.log(queryURL);
 
+          console.log(response);
+          var results = response.data;
+
+          for (var i = 0; i < results.length; i++) {
+          var actorDiv = $("<div>");
+            var p = $("<p>").text("Rating: " + results[i].rating);
+            var actorImage = $("<img>");
+            actorImage.attr("src", results[i].images.fixed_height.url);
+            actorDiv.append(p);
+            actorDiv.append(animalImage);
+           $("#castingroom").prepend(animalDiv);
+          }
   </body>
